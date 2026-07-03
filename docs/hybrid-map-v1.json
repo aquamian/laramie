@@ -2146,6 +2146,64 @@
         "text-halo-color": "#fff",
         "text-halo-width": 1
       }
+    },
+    {
+      "id": "openfreemap-peaks-final",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "filter": ["all"],
+      "layout": {
+        "visibility": "visible",
+        "text-field": [
+          "format",
+          ["coalesce", ["get", "name"], ""],
+          {
+            "font-scale": 1.1,
+            "text-font": ["literal", ["Noto Sans Bold"]]
+          },
+          "\n",
+          {},
+          ["to-string", ["coalesce", ["get", "ele"], ""]],
+          {
+            "font-scale": 0.9,
+            "text-font": ["literal", ["Noto Sans Regular"]]
+          },
+          " m (",
+          {
+            "font-scale": 0.9,
+            "text-font": ["literal", ["Noto Sans Regular"]]
+          },
+          ["to-string", ["coalesce", ["get", "ele_ft"], ""]],
+          {
+            "font-scale": 0.9,
+            "text-font": ["literal", ["Noto Sans Regular"]]
+          },
+          " ft)",
+          {
+            "font-scale": 0.9,
+            "text-font": ["literal", ["Noto Sans Regular"]]
+          }
+        ],
+        "text-size": [
+          "step",
+          ["zoom"],
+          ["case", ["<=", ["coalesce", ["get", "rank"], 999], 2], 11, 0],
+          7,
+          ["case", ["<=", ["coalesce", ["get", "rank"], 999], 5], 11, 0],
+          10,
+          ["case", ["<=", ["coalesce", ["get", "rank"], 999], 10], 11, 0],
+          13,
+          11
+        ],
+        "text-anchor": "center",
+        "text-max-width": 10
+      },
+      "paint": {
+        "text-color": "#2c3e50",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
     }
   ]
 }
