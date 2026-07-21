@@ -10,12 +10,12 @@
         "https://tiles.openfreemap.org/natural_earth/ne2sr/{z}/{x}/{y}.png"
       ],
       "type": "raster",
-      "attribution": "Base shading: <a href='https://www.naturalearthdata.com'>Natural Earth</a>"
+      "attribution": "© Natural Earth"
     },
     "openmaptiles": {
       "type": "vector",
       "url": "https://tiles.openfreemap.org/planet",
-      "attribution": "OpenFreeMap © <a href='https://openmaptiles.org'>OpenMapTiles</a> Data: © <a href='https://openstreetmap.org'>OpenStreetMap</a> contributors"
+      "attribution": "© OpenFreeMap © OpenStreetMap"
     },
     "aws-dem-elevation": {
       "type": "raster-dem",
@@ -25,7 +25,7 @@
       ],
       "tileSize": 256,
       "maxzoom": 15,
-      "attribution": "Terrain: AWS Open Data | Data: OpenFreeMap & OSM contributors"
+      "attribution": ""
     },
     "aws-dem-terrain": {
       "type": "raster-dem",
@@ -35,7 +35,7 @@
       ],
       "tileSize": 256,
       "maxzoom": 15,
-      "attribution": "Terrain: AWS Open Data | Data: OpenFreeMap & OSM contributors"
+      "attribution": ""
     },
     "fast-satellite": {
       "type": "raster",
@@ -44,11 +44,12 @@
       ],
       "tileSize": 256,
       "maxzoom": 19,
-      "attribution": "Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+      "attribution": "© Esri"
     },
     "maptiler-contours": {
       "type": "vector",
-      "url": "https://api.maptiler.com/tiles/contours/tiles.json?key=vmoEWhpaPxMo2heE8w0e"
+      "url": "https://api.maptiler.com/tiles/contours/tiles.json?key=vmoEWhpaPxMo2heE8w0e",
+      "attribution": "© MapTiler"
     }
   },
   "sprite": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm",
