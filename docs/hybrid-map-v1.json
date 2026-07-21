@@ -2191,6 +2191,51 @@
         "text-halo-color": "#ffffff",
         "text-halo-width": 2
       }
+    },
+    {
+      "id": "terrain-contour-lines",
+      "type": "line",
+      "source": "aws-dem-terrain",
+      "minzoom": 11,
+      "layout": {
+        "line-join": "round",
+        "line-cap": "round"
+      },
+      "paint": {
+        "line-color": "#a1887f",
+        "line-width": [
+          "match",
+          ["get", "nth_line"],
+          5, 1.2,
+          0.6
+        ],
+        "line-opacity": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          11, 0,
+          12, 0.4
+        ]
+      }
+    },
+    {
+      "id": "terrain-contour-labels",
+      "type": "symbol",
+      "source": "aws-dem-terrain",
+      "minzoom": 12,
+      "filter": ["==", ["get", "nth_line"], 5],
+      "layout": {
+        "symbol-placement": "line",
+        "text-field": ["concat", ["get", "ele"], "m"],
+        "text-font": ["Noto Sans Regular"],
+        "text-size": 10,
+        "text-max-angle": 25
+      },
+      "paint": {
+        "text-color": "#8d6e63",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
     }
   ]
 }
