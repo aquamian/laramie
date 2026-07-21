@@ -2964,36 +2964,100 @@
       "id": "terrain-contour-lines",
       "type": "line",
       "source": "maptiler-contours",
-      "source-layer": "contour",
-      "minzoom": 13,
+      "source-layer": "contour_ft",
+      "minzoom": 15,
       "layout": {
         "line-join": "round",
         "line-cap": "round"
       },
       "paint": {
         "line-color": "#a1887f",
-        "line-width": ["match", ["get", "nth_line"], 5, 1.2, 0.6],
-        "line-opacity": ["interpolate", ["linear"], ["zoom"], 11, 0, 12, 0.4]
+        "line-width": [
+          "case",
+          [
+            "==",
+            [
+              "-",
+              ["/", ["get", "height"], 100],
+              ["floor", ["/", ["get", "height"], 100]]
+            ],
+            0
+          ],
+          2.2,
+          [
+            "and",
+            [">=", ["zoom"], 17],
+            [
+              "==",
+              [
+                "-",
+                ["/", ["get", "height"], 20],
+                ["floor", ["/", ["get", "height"], 20]]
+              ],
+              0
+            ]
+          ],
+          1.0,
+          0.0
+        ],
+        "line-opacity": [
+          "case",
+          [
+            "==",
+            [
+              "-",
+              ["/", ["get", "height"], 100],
+              ["floor", ["/", ["get", "height"], 100]]
+            ],
+            0
+          ],
+          0.9,
+          0.4
+        ]
       }
     },
     {
       "id": "terrain-contour-labels",
       "type": "symbol",
       "source": "maptiler-contours",
-      "source-layer": "contour",
-      "minzoom": 13,
-      "filter": ["==", ["get", "nth_line"], 5],
+      "source-layer": "contour_ft",
+      "minzoom": 15,
+      "filter": [
+        "any",
+        [
+          "==",
+          [
+            "-",
+            ["/", ["get", "height"], 100],
+            ["floor", ["/", ["get", "height"], 100]]
+          ],
+          0
+        ],
+        [
+          "all",
+          [">=", ["zoom"], 17.5],
+          [
+            "==",
+            [
+              "-",
+              ["/", ["get", "height"], 20],
+              ["floor", ["/", ["get", "height"], 20]]
+            ],
+            0
+          ]
+        ]
+      ],
       "layout": {
         "symbol-placement": "line",
-        "text-field": ["concat", ["get", "ele"], "m"],
+        "text-field": ["concat", ["to-string", ["get", "height"]], " ft"],
         "text-font": ["Noto Sans Regular"],
-        "text-size": 10,
-        "text-max-angle": 25
+        "text-size": 11,
+        "symbol-spacing": 100
       },
       "paint": {
-        "text-color": "#8d6e63",
+        "text-color": "#4e342e",
         "text-halo-color": "#ffffff",
-        "text-halo-width": 1.5
+        "text-halo-width": 2.0
       }
     }
   ]
